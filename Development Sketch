@@ -1,0 +1,51 @@
+/* 
+
+KIPS
+
+This is an initial attempt at a simple sketch to bring functionality to the
+valve controller. Simple 2 wire sensor monitoring on a digital pin which in
+turn controls two mechanical relays; One for input line pressure (flow), the second
+for output line pressure (flow). This could be tweaked to operate a single valve,
+or both independently. No additional monitoring, IOT capability, UI, or alarms are
+captured in this version (in dev). Full disclosure, I am an ME, not a SW Dev, this is
+just what I do for my personal enjoyment. 
+    
+*/
+
+const int sensor00 = 4; //float sensor 00 (Tank Meter) assigned to D4
+const int relay00 = 7; //relay signal 00 (Reservoir Pump) assigned to D7
+const int relay01 = 8; //relay signal 01 (Tank Valve) assigned to D8
+const int diode01 = 13;//LED Diode reflecting state of sensor00 assigned to D13
+int statesensor00 = HIGH; //Set float sensor 00 state to HIGH
+int currentsensor00state; //
+
+void setup() {
+
+  pinMode(sensor00, INPUT_PULLUP); //Set Sensor 00 pin as INPUT
+  pinMode(relay00, OUTPUT); //Set relay00 pin as OUTPUT
+  pinMode(relay01, OUTPUT); //Set relay01 pin as OUTPUT
+  pinMode(diode01, OUTPUT); //Set diode01 pin as OUTPUT
+  digitalWrite(relay00, HIGH); //Set initial state of relay00 to HIGH
+  digitalWrite(relay01, HIGH); //Set initial state of relay01 to HIGH
+  
+}
+
+void loop() {
+  
+    currentsensor00state = digitalRead(sensor00);
+    
+    if (currentsensor00state == LOW) {
+      digitalWrite(diode01, HIGH);
+      delay(1000);
+      digitalWrite(relay00, LOW);
+      delay(1000);
+      digitalWrite(relay01, LOW);
+    }
+    else if (currentsensor00state == HIGH)  {
+      digitalWrite(diode01, LOW);
+      delay(1000);
+      digitalWrite(relay00, HIGH);
+      delay(9000);
+      digitalWrite(relay01, HIGH);
+    }
+}
