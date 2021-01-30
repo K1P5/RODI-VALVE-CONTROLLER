@@ -2,6 +2,8 @@
 2 Valve Electronic Water Management System (Beta)
 
 THIS IS A WORK IN PROGRESS!
+Thingiverse link:
+https://www.thingiverse.com/thing:4738765
 
 I will continue to support this design based on user feedback; this means if no one is particularly interested, I will update only as I create new revisions to meet my personal project needs. If you have any questions, concerns, comments please feel free to message me and I will get back to you!
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
